@@ -1,0 +1,30 @@
+<h1>LikesApp</h1>
+
+<%= form_with model:@post, id:"form" do |f| %>
+  <%#= render 'shared/error_messages', model: f.object %>
+  <% if @post.errors.any? %>
+    <div class="error-alert">
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+        <li class='error-message'><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.text_field :content ,id:"content" %>
+  <%= f.submit '投稿する',id: "submit" %>
+<% end %>
+
+<div id="list">
+</div>
+
+<% @posts.each do |post| %>
+    <div class="post">
+    <div class="post-date">
+      投稿日時：<%= post.created_at %>
+    </div>
+    <div class="post-content">
+      <%= post.content %>
+    </div>
+  </div>
+<% end %>
