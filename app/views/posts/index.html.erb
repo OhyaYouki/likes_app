@@ -1,5 +1,9 @@
 <h1>LikesApp</h1>
 
+<%= "こんにちは、#{current_user.nickname}さん" %><br>
+<%= link_to "ログアウト",destroy_user_session_path,method: :delete, class: :nav__logout %> 
+
+
 <%= form_with model:@post, id:"form" do |f| %>
   <%#= render 'shared/error_messages', model: f.object %>
   <% if @post.errors.any? %>
