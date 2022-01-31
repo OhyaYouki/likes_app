@@ -1,8 +1,18 @@
 <h1>LikesApp</h1>
 
-<%= form_with url: "/posts",method: :post,id:"form" do |form| %>
-  <%= form.text_field :content ,id:"content" %>
-  <%= form.submit '投稿する',id: "submit" %>
+<%= form_with model:@post, id:"form" do |f| %>
+  <%#= render 'shared/error_messages', model: f.object %>
+  <% if @post.errors.any? %>
+    <div class="error-alert">
+      <ul>
+        <% @post.errors.full_messages.each do |message| %>
+        <li class='error-message'><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.text_field :content ,id:"content" %>
+  <%= f.submit '投稿する',id: "submit" %>
 <% end %>
 
 <div id="list">
