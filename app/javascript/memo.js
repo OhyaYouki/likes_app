@@ -50,6 +50,8 @@ const buildHTML = (XHR) => {
       </div>
       <div class="post-content">
         ${item.content}
+        <i class="fa fa-heart like-btn"></i>
+        <i class="fa fa-heart unlike-btn"></i>
       </div>
     </div>`;
     return html;
