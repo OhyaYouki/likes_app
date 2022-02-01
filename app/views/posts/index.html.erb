@@ -14,22 +14,17 @@
 </div>
 
 <% @posts.each do |post| %>
+  <%= link_to post_path(post.id) do %>
     <div class="post">
-    <div class="post-date">
-      投稿日時：<%= post.created_at %>
+      <div class="post-date">
+        投稿日時：<%= post.created_at %>
+      </div>
+      <div class="post-content">
+      投稿者：<%= post.user.nickname %><br>
+      投稿内容：<%= link_to post.content,post_path(post.id) %>
+      <i class="fa fa-heart" id="like-btn"></i>
+      <%= post.likes.length %>
+      </div>
     </div>
-    <div class="post-content">
-      <%= post.content %>
-      <% if user_signed_in? %>
-        <% if post.likes.present? && current_user.likes.present? %>
-          <%# 削除を同期通信で行うのは出来なさそう %>
-            <i class="fa fa-heart" id="like-btn"></i>
-        <% else %>
-          <%= link_to post_likes_path(post.id),method: :post do %>
-            <i class="fa fa-heart" id="unlike-btn"></i>
-          <% end %>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
+  <% end %>
 <% end %>

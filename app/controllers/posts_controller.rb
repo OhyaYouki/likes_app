@@ -23,7 +23,10 @@ class PostsController < ApplicationController
     #   @posts = Post.all.order(id:"DESC")
     #   render :index
     # end
-     
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   private
