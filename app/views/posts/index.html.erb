@@ -20,8 +20,16 @@
     </div>
     <div class="post-content">
       <%= post.content %>
-      <i class="fa fa-heart" id="like-btn"></i>
-      <i class="fa fa-heart" id="unlike-btn"></i>
+      <% if user_signed_in? %>
+        <% if post.likes.present? && current_user.likes.present? %>
+          <%# 削除を同期通信で行うのは出来なさそう %>
+            <i class="fa fa-heart" id="like-btn"></i>
+        <% else %>
+          <%= link_to post_likes_path(post.id),method: :post do %>
+            <i class="fa fa-heart" id="unlike-btn"></i>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
   </div>
 <% end %>
