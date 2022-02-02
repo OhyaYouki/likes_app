@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'posts#index'
 
   resources :posts,only: [:index,:create,:show]  do
-    resources :likes, only: [:create,:destroy]
+    resources :likes, only: :create
   end
 
   resources :users,only: :show
