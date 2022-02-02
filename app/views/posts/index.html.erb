@@ -1,11 +1,11 @@
 <h1>LikesApp</h1>
 
-<%= "こんにちは、#{current_user.nickname}さん" %><br>
+<%= link_to "こんにちは、#{current_user.nickname}さん" ,user_path(current_user.id)%><br>
 <%= link_to "ログアウト",destroy_user_session_path,method: :delete, class: :nav__logout %> 
 
 
-<%= form_with model:@post, id:"form" do |f| %>
-  <%#= render 'shared/error_messages', model: f.object %>
+<%= form_with model:@post, id:"form" ,local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
   <%= f.text_field :content ,id:"content" %>
   <%= f.submit '投稿する',id: "submit" %>
 <% end %>
@@ -20,10 +20,10 @@
         投稿日時：<%= post.created_at %>
       </div>
       <div class="post-content">
-      投稿者：<%= post.user.nickname %><br>
-      投稿内容：<%= link_to post.content,post_path(post.id) %>
-      <i class="fa fa-heart" id="like-btn"></i>
-      <%= post.likes.length %>
+        投稿者：<%= link_to post.user.nickname,user_path(post.user.id) %><br>
+        投稿内容：<%= link_to post.content,post_path(post.id) %>
+        <i class="fa fa-heart" id="like-btn"></i>
+        <%= post.likes.length %>
       </div>
     </div>
   <% end %>
