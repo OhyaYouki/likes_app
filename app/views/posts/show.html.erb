@@ -6,8 +6,8 @@
     投稿者：<%= @post.user.nickname %><br>
     投稿内容：<%= @post.content %>
     <% if user_signed_in? %>
-      <% if @post.likes.present? && current_user.likes.present? %>
-        <%= link_to post_likes_path(@post.id),method: :post do %>
+      <% if @like.present? %>
+        <%= link_to post_like_path(@post.id,@like[0].id),method: :delete do %>
           <i class="fa fa-heart" id="like-btn"></i>
         <% end %>
       <% else %>
@@ -20,3 +20,5 @@
 </div>
 
 <%= link_to "トップページに戻る", root_path %>
+
+

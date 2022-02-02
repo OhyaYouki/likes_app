@@ -33,6 +33,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @like = Like.where(user_id:current_user.id,post_id:@post.id)
   end
 
   private
