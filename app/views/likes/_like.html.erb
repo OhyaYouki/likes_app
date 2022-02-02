@@ -1,17 +1,14 @@
 <% if user_signed_in? %>
   <% if @like.present? %>
     <%= link_to post_like_path(@post.id,@like[0].id),method: :delete ,remote: true do %>
-      <div class="red-heart" id="red-heart-btn">
-        <i class="fa fa-heart" id="like-btn"></i>
-        <%= @post.likes.length %>  
-      </div>
+      <i class="fa fa-heart" id="like-btn"></i>
+      <%= @post.likes.length %>  
     <% end %>
   <% else %>
     <%= link_to post_likes_path(@post.id),method: :post ,remote: true do %>
-      <div class="gray-heart" id="gray-heart-btn">
-        <i class="fa fa-heart" id="unlike-btn"></i>
-        <%= @post.likes.length %>  
-      </div>
+      <i class="fa fa-heart" id="unlike-btn"></i>
+      <%= @post.likes.length %>  
     <% end %>
   <% end %>
 <% end %>
+
