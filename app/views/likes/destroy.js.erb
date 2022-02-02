@@ -1,0 +1,6 @@
+
+<%# console.log("destroy.js.erbファイルが呼び出されました！"); %>
+
+
+<%# (".post-content").append("<i class="fa fa-heart" id="unlike-btn"></i>") %>
+document.getElementById('heart').innerHTML = "<%= j(render partial: 'unlike', locals: {like: @like}) %>"

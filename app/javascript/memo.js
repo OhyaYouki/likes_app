@@ -1,6 +1,6 @@
-const buildHTML = (XHR) => {
-  const item = XHR.response.post;
-  // jsでエラー文を出したい
+// const buildHTML = (XHR) => {
+//   const item = XHR.response.post;
+//   // jsでエラー文を出したい
   
   // console.log(item)
   // if (item.content == '') {
@@ -43,43 +43,43 @@ const buildHTML = (XHR) => {
   // }
 
 
-  const html = `
-    <div class="post">
-      <div class="post-date">
-        投稿日時:${item.created_at}
-      </div>
-      <div class="post-content">
-        ${item.content}
-        <i class="fa fa-heart" id="like-btn"></i>
-        <i class="fa fa-heart" id="unlike-btn"></i>
-      </div>
-    </div>`;
-    return html;
-};
+//   const html = `
+//     <div class="post">
+//       <div class="post-date">
+//         投稿日時:${item.created_at}
+//       </div>
+//       <div class="post-content">
+//         ${item.content}
+//         <i class="fa fa-heart" id="like-btn"></i>
+//         <i class="fa fa-heart" id="unlike-btn"></i>
+//       </div>
+//     </div>`;
+//     return html;
+// };
 
 
-function post(){
-  const submit = document.getElementById("submit");
-  submit.addEventListener("click",(e)=>{
-      e.preventDefault();
-      const form = document.getElementById("form");
-      const formData = new FormData(form);
-      const XHR = new XMLHttpRequest();
-      XHR.open("POST","/posts",true);
-      XHR.responseType = "json";
-      XHR.send(formData);
-      XHR.onload = () => {
-        if (XHR.status != 200) {
-          alert(`Error ${XHR.status}: ${XHR.statusText}`);
-          return null;
-        };
-        // debugger
-        const list = document.getElementById("list");
-        const formText = document.getElementById("content");
-        list.insertAdjacentHTML("afterend",buildHTML(XHR));
-        formText.value = "";
-      };
-  });
-};
+// function post(){
+//   const submit = document.getElementById("submit");
+//   submit.addEventListener("click",(e)=>{
+//       e.preventDefault();
+//       const form = document.getElementById("form");
+//       const formData = new FormData(form);
+//       const XHR = new XMLHttpRequest();
+//       XHR.open("POST","/posts",true);
+//       XHR.responseType = "json";
+//       XHR.send(formData);
+//       XHR.onload = () => {
+//         if (XHR.status != 200) {
+//           alert(`Error ${XHR.status}: ${XHR.statusText}`);
+//           return null;
+//         };
+//         // debugger
+//         const list = document.getElementById("list");
+//         const formText = document.getElementById("content");
+//         list.insertAdjacentHTML("afterend",buildHTML(XHR));
+//         formText.value = "";
+//       };
+//   });
+// };
 
-window.addEventListener('load',post);
+// window.addEventListener('load',post);
