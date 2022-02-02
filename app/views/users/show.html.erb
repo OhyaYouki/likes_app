@@ -22,7 +22,7 @@
   <% @likes.each do |like| %>
     <div class="post">
       <div class="post-date">
-        投稿日時：<%= like.post.created_at %>
+        投稿日時：<%= l like.post.created_at %>
       </div>
       <div class="post-content">
         投稿者：<%= like.user.nickname %><br>
