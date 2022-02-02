@@ -17,18 +17,6 @@ class PostsController < ApplicationController
     else
       render :index
     end
-
-    # render json:{post: @post}
-    
-    # エラー文を出したかった
-    # binding.pry
-    # if @post.save
-    #   # binding.pry
-    # else
-    #   # binding.pry
-    #   @posts = Post.all.order(id:"DESC")
-    #   render :index
-    # end
   end
 
   def show

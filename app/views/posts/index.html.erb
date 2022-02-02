@@ -22,8 +22,8 @@
       <div class="post-content">
         投稿者：<%= link_to post.user.nickname,user_path(post.user.id) %><br>
         投稿内容：<%= link_to post.content,post_path(post.id) %>
-        <i class="fa fa-heart" id="like-btn"></i>
-        <%= post.likes.length %>
+        <%# <i class="fa fa-heart" id="like-btn"></i> %>
+        <%# <%= post.likes.length %> 
       </div>
     </div>
   <% end %>

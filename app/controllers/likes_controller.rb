@@ -1,20 +1,20 @@
 class LikesController < ApplicationController
+  before_action :set_like
 
   def create
-    # binding.pry
-    @post = Post.find(params[:post_id])
     Like.create(user_id:current_user.id,post_id:params[:post_id])
     @like = Like.where(user_id:current_user.id,post_id:params[:post_id])
-    # redirect_to post_path(@post.id)
-    # render json:{post: post}
   end
 
   def destroy
-    # binding.pry
-    @post = Post.find(params[:post_id])
     @like = Like.where(user_id:current_user.id,post_id:params[:post_id])
     @like.destroy_all
-    # redirect_to post_path(@post.id)
+  end
+
+  private
+
+  def set_like
+    @post = Post.find(params[:post_id])
   end
 
 end
