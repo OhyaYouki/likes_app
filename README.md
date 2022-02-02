@@ -1,24 +1,45 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## DB 設計
 
-Things you may want to cover:
+## users table
 
-* Ruby version
+| Column             | Type                | Options                      |
+| ------------------ | ------------------- | ---------------------------- |
+| id                 |                     | null: false                  |
+| nickname           | string              | null: false                  |
+| email              | devise のデフォルト   | null: false                  |
+| encrypted_password | devise のデフォルト   | null: false                  |
 
-* System dependencies
+### Association
 
-* Configuration
+* has_many :posts
+* has_many :likes
 
-* Database creation
+## posts table
 
-* Database initialization
+| Column              | Type               | Options                       |
+| ------------------- | ------------------ | ----------------------------- |
+| id                  |                    | null: false                   |
+| content             | string             | null: false                   |
+| user                | references         | null: false,foreign_key: true |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+* belongs_to :user
+* has_many :likes
 
-* Deployment instructions
+## likes table
 
-* ...
+| Column              | Type               | Options                       |
+| ------------------- | ------------------ | ----------------------------- |
+| id                  |                    | null: false                   |
+| item                | references         | null: false,foreign_key: true |
+| user                | references         | null: false,foreign_key: true |
+
+### Association
+
+* belongs_to :user
+* belongs_to :post
+
+## 備考
