@@ -1,0 +1,34 @@
+<div class="user-show">
+  <%= "#{@user.nickname}さんの詳細ページ" %><br>
+  <%= link_to "トップページに戻る", root_path %>
+
+  <% @posts.each do |post| %>
+    <div class="post">
+      <div class="post-date">
+        投稿日時：<%= post.created_at %>
+      </div>
+      <div class="post-content">
+        投稿内容：<%= post.content %>
+        <i class="fa fa-heart" id="like-btn"></i>
+        <%= post.likes.length %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="user-show-like"> 
+    <%="#{@user.nickname}さんのいいねした投稿" %>
+  </div>
+
+  <% @likes.each do |like| %>
+    <div class="post">
+      <div class="post-date">
+        投稿日時：<%= like.post.created_at %>
+      </div>
+      <div class="post-content">
+        投稿者：<%= like.user.nickname %><br>
+        投稿内容：<%= like.post.content %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
