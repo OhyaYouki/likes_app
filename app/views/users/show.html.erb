@@ -5,7 +5,7 @@
   <% @posts.each do |post| %>
     <div class="post">
       <div class="post-date">
-        投稿日時：<%= post.created_at %>
+        投稿日時：<%= l post.created_at %>
       </div>
       <div class="post-content">
         投稿内容：<%= post.content %>
