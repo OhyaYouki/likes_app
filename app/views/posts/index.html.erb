@@ -10,8 +10,8 @@
   <%= f.submit '投稿する',id: "submit" %>
 <% end %>
 
-<div id="list">
-</div>
+<i class="fas fa-phone faa-wrench animated"></i>
+<i class="fas fa-bell faa-ring animated"></i>
 
 <% @posts.each do |post| %>
   <%= link_to post_path(post.id) do %>

@@ -21,7 +21,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @like = Like.where(user_id:current_user.id,post_id:@post.id)
+    # @like = Like.where(user_id:current_user.id,post_id:@post.id)
+    @like = Like.find_by(user_id:current_user.id,post_id:@post.id)
   end
 
   private
@@ -29,3 +30,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content).merge(user_id:current_user.id)
   end
 end
+

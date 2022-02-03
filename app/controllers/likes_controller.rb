@@ -3,12 +3,15 @@ class LikesController < ApplicationController
 
   def create
     Like.create(user_id:current_user.id,post_id:params[:post_id])
-    @like = Like.where(user_id:current_user.id,post_id:params[:post_id])
+    # @like = Like.where(user_id:current_user.id,post_id:params[:post_id])
+    @like = Like.find_by(user_id:current_user.id,post_id:params[:post_id])
   end
 
   def destroy
-    @like = Like.where(user_id:current_user.id,post_id:params[:post_id])
-    @like.destroy_all
+    # @like = Like.where(user_id:current_user.id,post_id:params[:post_id])
+    @like = Like.find_by(user_id:current_user.id,post_id:params[:post_id])
+    # @like.destroy_all
+    @like.destroy
   end
 
   private
@@ -18,3 +21,5 @@ class LikesController < ApplicationController
   end
 
 end
+
+
