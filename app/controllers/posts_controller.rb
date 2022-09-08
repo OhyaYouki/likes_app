@@ -23,6 +23,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     # @like = Like.where(user_id:current_user.id,post_id:@post.id)
     @like = Like.find_by(user_id:current_user.id,post_id:@post.id)
+    # @like = Like.new
   end
 
   private
