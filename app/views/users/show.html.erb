@@ -2,13 +2,32 @@
   <%= "#{@user.nickname}さんの詳細ページ" %><br>
   <%= link_to "トップページに戻る", root_path %>
 
+  <div class="user-show-like"> 
+    <%="#{@user.nickname}さんの投稿" %>
+  </div>
+
   <% @posts.each do |post| %>
     <div class="post">
       <div class="post-date">
         投稿日時：<%= l post.created_at %>
       </div>
       <div class="post-content">
+        投稿者：<%= post.user.nickname %><br>
         投稿内容：<%= post.content %>
+      </div>
+      <div id="heart_<%= post.id %>">
+        <% if Like.find_by(user_id:current_user.id,post_id:post.id).present? %>
+          <%#= link_to post_like_path(@post.id,@like[0].id),method: :delete ,remote: true do %>
+          <%= link_to post_like_path(post.id,Like.find_by(user_id:current_user.id,post_id:post.id).id),method: :delete ,remote: true,class: "heart-length" do %>
+            <i class="fa fa-heart" id="like-btn"></i>
+            <%= post.likes.length %>
+          <% end %>
+        <% else %>
+          <%= link_to post_likes_path(post.id),method: :post ,remote: true,class: "heart-length" do %>
+            <i class="fa fa-heart" id="unlike-btn"></i>
+            <%= post.likes.length %> 
+          <% end %>
+        <% end %>
       </div>
     </div>
   <% end %>

@@ -12,6 +12,7 @@ class LikesController < ApplicationController
     # binding.pry
     # @like = Like.where(like_params)
     @like = Like.find_by(like_params)
+    # @like = Like.find(params[:id])でできることない？
     # @like.destroy_all
     @like.destroy
     @like = nil

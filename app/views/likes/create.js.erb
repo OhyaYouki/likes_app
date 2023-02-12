@@ -1,2 +1,2 @@
-document.getElementById('heart').innerHTML = "<%= j(render 'like') %>"
+document.getElementById('heart_<%= params[:post_id] %>').innerHTML = "<%= j(render 'like') %>"
 
