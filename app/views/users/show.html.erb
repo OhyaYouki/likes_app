@@ -16,9 +16,9 @@
         投稿内容：<%= post.content %>
       </div>
       <div id="heart_<%= post.id %>">
-        <% if Like.find_by(user_id:current_user.id,post_id:post.id).present? %>
+        <% if like_date = Like.find_by(user_id:current_user.id,post_id:post.id) %>
           <%#= link_to post_like_path(@post.id,@like[0].id),method: :delete ,remote: true do %>
-          <%= link_to post_like_path(post.id,Like.find_by(user_id:current_user.id,post_id:post.id).id),method: :delete ,remote: true,class: "heart-length" do %>
+          <%= link_to post_like_path(post.id,like_date.id),method: :delete ,remote: true,class: "heart-length" do %>
             <i class="fa fa-heart" id="like-btn"></i>
             <%= post.likes.length %>
           <% end %>
@@ -36,16 +36,32 @@
     <%="#{@user.nickname}さんのいいねした投稿" %>
   </div>
 
-  <% @likes.each do |like| %>
-    <div class="post">
-      <div class="post-date">
-        投稿日時：<%= l like.post.created_at %>
+  <div id="heart">
+    <% @likes.each do |like| %>
+      <div class="post">
+        <div class="post-date">
+          投稿日時：<%= l like.post.created_at %>
+        </div>
+        <div class="post-content">
+          投稿者：<%= like.user.nickname %><br>
+          投稿内容：<%= like.post.content %>
+        </div>
+        
+        <% if like_date = Like.find_by(user_id:current_user.id,post_id:like.post.id) %>
+          <%#= link_to post_like_path(@post.id,@like[0].id),method: :delete ,remote: true do %>
+          <%#= link_to post_like_path(like.post.id,Like.find_by(user_id:current_user.id,post_id:like.post.id).id),method: :delete ,remote: true,class: "heart-length" do %>
+          <%= link_to "/users/#{@user.id}/likes/#{like.id}",method: :delete ,remote: true,class: "heart-length" do %>
+            <i class="fa fa-heart" id="like-btn"></i>
+            <%= like.post.likes.length %>
+          <% end %>
+        <% else %>
+          <%= link_to post_likes_path(like.post.id),method: :post ,remote: true,class: "heart-length" do %>
+            <i class="fa fa-heart" id="unlike-btn"></i>
+            <%= like.post.likes.length %> 
+          <% end %>
+        <% end %>
       </div>
-      <div class="post-content">
-        投稿者：<%= like.user.nickname %><br>
-        投稿内容：<%= like.post.content %>
-      </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
 </div>

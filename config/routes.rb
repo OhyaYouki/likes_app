@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     resources :likes, only: [:create,:destroy]
   end
 
-  resources :users,only: :show
+  resources :users,only: :show do
+    # resources :likes, only: [:destroy]
+    delete 'likes/:id', to: 'likes#user_show_destroy'
+  end
 end
 
 
