@@ -1,2 +1,2 @@
 <%# console.log("destroy.js.erbファイルが呼び出されました！"); %>
-document.getElementById('heart_<%= params[:post_id] %>').innerHTML = "<%= j(render partial: 'like', locals: {like: @like}) %>"
+document.getElementById('heart_<%= params[:post_id] %>').innerHTML = "<%= j(render partial: 'like') %>"

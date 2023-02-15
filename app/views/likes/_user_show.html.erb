@@ -16,7 +16,7 @@
         <%= like.post.likes.length %>
       <% end %>
     <% else %>
-      <%= link_to post_likes_path(like.post.id),method: :post ,remote: true,class: "heart-length" do %>
+      <%= link_to "/posts/#{like.post.id}/likes",method: :post ,remote: true,class: "heart-length" do %>
         <i class="fa fa-heart" id="unlike-btn"></i>
         <%= like.post.likes.length %> 
       <% end %>

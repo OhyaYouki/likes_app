@@ -5,7 +5,7 @@
   <div class="post-content">
     投稿者：<%= @post.user.nickname %><br>
     投稿内容：<%= @post.content %>
-    <div id="heart">
+    <div id="heart_<%= @post.id %>">
       <% if @like.present? %>
         <%#= link_to post_like_path(@post.id,@like[0].id),method: :delete ,remote: true do %>
         <%= link_to post_like_path(@post.id,@like.id),method: :delete ,remote: true,class: "heart-length" do %>
