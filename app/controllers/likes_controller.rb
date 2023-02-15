@@ -21,17 +21,7 @@ class LikesController < ApplicationController
 
 
   # 以下users/show/html.erbのあるユーザーがいいねした投稿に対していいねをする、いいねを外した時の挙動
-    # 自分ではないユーザーの詳細ページでは
-    # いいねや、いいねを外すことができ
-
-    # 自分の詳細ページでいいねを外した場合
-    # 非同期でいいねの投稿一覧から消えるような実装
-
-
-  # やり直し。ルーティングをuserとネストしたところから
-
-
-
+  
   def user_show_create
     # binding.pry
     # ユーザー詳細ページのuser情報
@@ -45,12 +35,6 @@ class LikesController < ApplicationController
 
     @likes = @user.likes
 
-
-    # Like.create(like_params)
-    # @like = Like.where(like_params)
-    # post = Post.find(params[:post_id])
-    # @user = post.user
-    # @likes = @user.likes
   end
 
   def user_show_destroy
@@ -68,12 +52,7 @@ class LikesController < ApplicationController
 
     @likes = @user.likes
 
-
-    # binding.pry
-    # @likes = Like.find(params[:id]).user.likes
-    # @user = User.find(params[:user_id])
     @likes = @user.likes
-    # binding.pry
   end
 
   private
@@ -81,10 +60,6 @@ class LikesController < ApplicationController
   def like_params
     params.permit(:post_id).merge(user_id:current_user.id)
   end
-
-  # def user_show_params
-  #   params.permit(:user_id).merge(user_id:current_user.id)
-  # end
 
   def set_like
     @post = Post.find(params[:post_id])
