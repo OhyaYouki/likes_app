@@ -6,7 +6,6 @@
 
 | Column             | Type                | Options                      |
 | ------------------ | ------------------- | ---------------------------- |
-| id                 |                     | null: false                  |
 | nickname           | string              | null: false                  |
 | email              | devise のデフォルト   | null: false                  |
 | encrypted_password | devise のデフォルト   | null: false                  |
@@ -20,7 +19,6 @@
 
 | Column              | Type               | Options                       |
 | ------------------- | ------------------ | ----------------------------- |
-| id                  |                    | null: false                   |
 | content             | string             | null: false                   |
 | user                | references         | null: false,foreign_key: true |
 
@@ -33,7 +31,6 @@
 
 | Column              | Type               | Options                       |
 | ------------------- | ------------------ | ----------------------------- |
-| id                  |                    | null: false                   |
 | item                | references         | null: false,foreign_key: true |
 | user                | references         | null: false,foreign_key: true |
 

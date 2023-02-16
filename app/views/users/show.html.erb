@@ -46,8 +46,7 @@
           投稿者：<%= like.user.nickname %><br>
           投稿内容：<%= like.post.content %>
         </div>
-        
-        <% if like_date = Like.find_by(user_id:current_user.id,post_id:like.post.id) %>
+        <% if Like.find_by(user_id:current_user.id,post_id:like.post.id) %>
           <%= link_to "/users/#{@user.id}/likes/#{like.id}",method: :delete ,remote: true,class: "heart-length" do %>
             <i class="fa fa-heart" id="like-btn"></i>
             <%= like.post.likes.length %>
