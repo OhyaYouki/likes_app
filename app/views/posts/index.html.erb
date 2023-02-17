@@ -25,18 +25,18 @@
           投稿内容：<%= post.content %>
         </div>
         <div id="heart_<%= post.id %>">
-        <% if like_date = Like.find_by(user_id:current_user.id,post_id:post.id) %>
-          <%= link_to post_like_path(post.id,like_date.id),method: :delete ,remote: true,class: "heart-length" do %>
-            <i class="fa fa-heart" id="like-btn"></i>
-            <%= post.likes.length %>
+          <% if like_date = Like.find_by(user_id:current_user.id,post_id:post.id) %>
+            <%= link_to post_like_path(post.id,like_date.id),method: :delete ,remote: true,class: "heart-length" do %>
+              <i class="fa fa-heart" id="like-btn"></i>
+              <%= post.likes.length %>
+            <% end %>
+          <% else %>
+            <%= link_to post_likes_path(post.id),method: :post ,remote: true,class: "heart-length" do %>
+              <i class="fa fa-heart" id="unlike-btn"></i>
+              <%= post.likes.length %> 
+            <% end %>
           <% end %>
-        <% else %>
-          <%= link_to post_likes_path(post.id),method: :post ,remote: true,class: "heart-length" do %>
-            <i class="fa fa-heart" id="unlike-btn"></i>
-            <%= post.likes.length %> 
-          <% end %>
-        <% end %>
-      </div>
+        </div>
       <% end %>
     </div>
   <% end %>
