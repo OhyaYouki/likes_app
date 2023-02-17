@@ -6,8 +6,7 @@
     投稿者：<%= @post.user.nickname %><br>
     投稿内容：<%= @post.content %>
     <div id="heart_<%= @post.id %>">
-      <% if @like.present? %>
-        <%#= link_to post_like_path(@post.id,@like[0].id),method: :delete ,remote: true do %>
+      <% if @like %>
         <%= link_to post_like_path(@post.id,@like.id),method: :delete ,remote: true,class: "heart-length" do %>
           <i class="fa fa-heart" id="like-btn"></i>
           <%= @post.likes.length %>
