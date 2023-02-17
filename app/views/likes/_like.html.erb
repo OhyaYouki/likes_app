@@ -1,4 +1,4 @@
-<% if @like.present? %>
+<% if @like %>
   <%= link_to post_like_path(@post.id,@like.id),method: :delete ,remote: true,class: "heart-length" do %> 
     <i class="fa fa-heart" id="like-btn"></i>
     <%= @post.likes.length %>
