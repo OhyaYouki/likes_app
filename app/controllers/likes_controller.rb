@@ -6,16 +6,11 @@ class LikesController < ApplicationController
   # 以下一覧ページ、投稿詳細ページ、ユーザー詳細ページの投稿一覧のいいねした時に動くアクション
 
   def create
-    Like.create(like_params)
-    @like = Like.find_by(like_params)
-
-    # 上をまとめて、@like =Like.create(like_params) でもいい？
+    @like = Like.create(like_params)
   end
 
   def destroy
-    like = Like.find_by(like_params)
-    # like = Like.find(params[:id])でもいい？
-
+    like = Like.find(params[:id])
     like.destroy
   end
 
